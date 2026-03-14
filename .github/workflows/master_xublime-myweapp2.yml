@@ -23,7 +23,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build mywebapp2.csproj --configuration Release
 
       - name: Publish
         run: dotnet publish -c Release -o ./publish
