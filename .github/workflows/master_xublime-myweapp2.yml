@@ -61,4 +61,4 @@ jobs:
         with:
           app-name: 'xublime-myweapp2'
           slot-name: 'Production'
-          package: ./dotnet-app
+          package: .
