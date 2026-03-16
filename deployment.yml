@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mywebapp
-          image: xublimeregistry.azurecr.io/mywebapp:latest
+          image: xublimeregistry.azurecr.io/mywebapp:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

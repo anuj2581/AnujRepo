@@ -23,7 +23,7 @@ namespace mywebapp2.Controllers
                     new Product { Id = 2, Name = "Smartphone", Price = 30000, Category = "Electronics" },
                     new Product { Id = 3, Name = "Headphones", Price = 2500, Category = "Accessories" },
                     new Product { Id = 4, Name = "Keyboard", Price = 1200, Category = "Accessories" },
-                    new Product { Id = 5, Name = "Mouse", Price = 800, Category = "Accessories" },
+                    new Product { Id = 5, Name = "Mouse12", Price = 1000, Category = "Accessories" },
                     new Product {Id = 6, Name ="Ram - Mobile", Price=25000, Category="xublime test"},
                     new Product {Id = 7, Name ="Ram2 - Mobile-APPLE", Price=85000, Category="xublime test apple"}
                 };
