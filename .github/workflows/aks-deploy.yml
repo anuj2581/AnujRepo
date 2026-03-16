@@ -1,0 +1,50 @@
+name: Build and Deploy to AKS
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  ACR_NAME: xublimeregistry
+  IMAGE_NAME: mywebapp
+  RESOURCE_GROUP: az204-rgram
+  CLUSTER_NAME: xublime-aks
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Login to ACR
+        run: |
+          az acr login --name $ACR_NAME
+
+      - name: Build and Push Docker Image
+        run: |
+          docker buildx build \
+          --platform linux/amd64,linux/arm64 \
+          -t $ACR_NAME.azurecr.io/$IMAGE_NAME:latest \
+          --push .
+
+      - name: Get AKS Credentials
+        run: |
+          az aks get-credentials \
+          --resource-group $RESOURCE_GROUP \
+          --name $CLUSTER_NAME \
+          --overwrite-existing
+
+      - name: Deploy to AKS
+        run: |
+          kubectl apply -f deployment.yml
+          kubectl apply -f service.yml
+          kubectl rollout restart deployment mywebapp
