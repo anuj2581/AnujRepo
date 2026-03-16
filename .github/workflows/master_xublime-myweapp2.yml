@@ -1,4 +1,4 @@
-name: Build and deploy ASP.Net Core app to Azure Web App - xublime-myweapp2
+name: Build and deploy ASP.Net Core app to Azure Web App - xublime-mywebapp2
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
@@ -17,14 +16,14 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: "8.0.x"
 
       - name: Restore dependencies
         run: dotnet restore mywebapp2/mywebapp2.csproj
-      
+
       - name: Build project
         run: dotnet build mywebapp2/mywebapp2.csproj --configuration Release --no-restore
-      
+
       - name: Publish project
         run: dotnet publish mywebapp2/mywebapp2.csproj -c Release -o ./publish --no-build
 
@@ -43,7 +42,6 @@ jobs:
       contents: read
 
     steps:
-
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
@@ -59,6 +57,6 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'xublime-myweapp2'
-          slot-name: 'Production'
+          app-name: "xublime-myweapp2"
+          slot-name: "Production"
           package: .

@@ -13,7 +13,7 @@ spec:
         app: mywebapp
     spec:
       containers:
-      - name: mywebapp
-        image: xublimeregistry.azurecr.io/mywebapp:v1
-        ports:
-        - containerPort: 8080
+        - name: mywebapp
+          image: xublimeregistry.azurecr.io/mywebapp:latest
+          ports:
+            - containerPort: 8080
