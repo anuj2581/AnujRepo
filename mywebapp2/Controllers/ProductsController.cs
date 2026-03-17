@@ -31,13 +31,13 @@ namespace mywebapp2.Controllers
             return products;
         }
         [HttpPost("Ispolidromstring")]
-        public IActionResult checkpolidrom(string str)
+        public IActionResult checkpolidrom(Msgpolidrom msgplidrom)
         {
             return Ok( 
                 new
                 {
-                    YourString= str,
-                    ispolidrom = IsPolidrom(str)
+                    YourString= msgplidrom.msg,
+                    ispolidrom = IsPolidrom(msgplidrom.msg)
                 }
                 );
         }

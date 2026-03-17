@@ -7,4 +7,9 @@
         public decimal Price { get; set; }
         public string Category { get; set; }
     }
+
+    public class Msgpolidrom
+    {
+        public string msg { get; set; }
+    }
 }
