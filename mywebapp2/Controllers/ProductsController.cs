@@ -30,5 +30,24 @@ namespace mywebapp2.Controllers
 
             return products;
         }
+        [HttpPost("Ispolidromstring")]
+        public IActionResult checkpolidrom(string str)
+        {
+            return Ok( 
+                new
+                {
+                    YourString= str,
+                    ispolidrom = IsPolidrom(str)
+                }
+                );
+        }
+        private bool IsPolidrom(string str)
+        {
+            if (string.IsNullOrEmpty(str)) return false;
+            var temp=str.ToLower();
+            var cleand= new string(str.Where(char.IsLetterOrDigit).Select(char.ToLower).ToArray());
+            var revesestr = new string(cleand.Reverse().ToArray());           
+            return revesestr == cleand;
+        }
     }
 }
